@@ -1,0 +1,38 @@
+<div id="top_bar">
+	<a href="https://twitter.com/MindPuckHockey" class="twitter-follow-button" data-show-count="false">Follow @MindPuckHockey</a>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+</div>
+
+<h1>MindPuck.TV</h1>
+
+<%= image_tag "brain.jpeg", :rel => "mindpuck-brain", :type => "image/jpeg" %>
+
+
+
+
+
+<% @posts.each do |post| %>
+
+<h2><%= post.title %></h2>
+<iframe width="560" height="315" src="<%= post.iframe %>" frameborder="0" allowfullscreen></iframe>
+
+<% end %>
+
+<br />
+
+<% @posts.each do |post| %>
+    <%= post.title %>
+   <%= post.iframe %>
+   <%= post.description %>
+   <%= post.time %>
+   <%= post.featuring %>
+   <%= link_to 'Show', post %>
+   <%= link_to 'Edit', edit_post_path(post) %>
+   <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </tr>
+<% end %>
+
+<br />
+
+<%= link_to 'New Post', new_post_path %>
