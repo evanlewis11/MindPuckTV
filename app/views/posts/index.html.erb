@@ -1,38 +1,67 @@
-<div id="top_bar">
-	<a href="https://twitter.com/MindPuckHockey" class="twitter-follow-button" data-show-count="false">Follow @MindPuckHockey</a>
-	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<html>
+<header>		
+		<div id="headercontainer">
+		
+			<div id="followbar">
+				<ul>
+					<li>
+						<a href="http://mindpuck.ca" target="_blank">
+							<p>Go To MindPuckHockey.com</p>
+						</a>
+					</li>
+					
+					<li>	
+						<a href="https://twitter.com/MindPuckHockey" class="twitter-follow-button" data-show-count="false">Follow @MindPuckHockey</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+					</li>
+					
+					<li>
+						<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Ffacebook.com%2FMindPuck&amp;send=false&amp;layout=button_count&amp;width=200&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=335273373225284" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px; height:21px;" allowTransparency="true"></iframe>
+					</li>
+					<li>
+						<%= link_to 'New Post', new_post_path %>
+					</li>
+				</ul>
+			</div>
+		
+		</div>
+		
+			<div id="cupbanner">
+				<%= image_tag "brain.jpeg", :rel => "mindpuck-brain", :type => "image/jpeg" %>
+				<br />
+				<%= image_tag "mindpuck.jpeg", :rel => "mindpuck-brain", :type => "image/jpeg" %>
+				<%= image_tag "tv-7.png", :rel => "tv-image", :type => "image/png" %>
+			</div>
+		
+		
+</header>
+
+<body>
+	
+<div id="wrap">
+	
+	<div id="featured">
+		
+			<h2><%= @featured.title %></h2>
+			<iframe width="560" height="315" src="<%= @featured.iframe %>" frameborder="0" allowfullscreen></iframe>
+
+	</div>
+
+<div id="postindex">
+
+<% @posts.each do |post| %>
+
+<div class="postbox">
+   <iframe width="200" height="150" src="<%= post.iframe %>" frameborder="0" allowfullscreen></iframe>
+   <h4><%= post.title %></h4>
+   <%= link_to 'Edit', edit_post_path(post) %>
+   <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>
+<% end %>
 
 </div>
 
-<h1>MindPuck.TV</h1>
-
-<%= image_tag "brain.jpeg", :rel => "mindpuck-brain", :type => "image/jpeg" %>
-
-
-
-
-
-<% @posts.each do |post| %>
-
-<h2><%= post.title %></h2>
-<iframe width="560" height="315" src="<%= post.iframe %>" frameborder="0" allowfullscreen></iframe>
-
-<% end %>
-
 <br />
 
-<% @posts.each do |post| %>
-    <%= post.title %>
-   <%= post.iframe %>
-   <%= post.description %>
-   <%= post.time %>
-   <%= post.featuring %>
-   <%= link_to 'Show', post %>
-   <%= link_to 'Edit', edit_post_path(post) %>
-   <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-  </tr>
-<% end %>
-
-<br />
-
-<%= link_to 'New Post', new_post_path %>
+</body>
+</html>
